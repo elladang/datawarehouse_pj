@@ -12,6 +12,9 @@ SELECT
   sales_order_line_key
   , fol.sales_order_key
   , fso.customer_key
+  , fso.sales_person_person_key
+  , fso.picked_by_person_key
+  , fso.contact_person_key
   , product_key
   , quantity
   , unit_price
