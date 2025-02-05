@@ -1,6 +1,21 @@
+WITH fact_sales_order_line__source AS (
 SELECT 
-  order_line_id sales_order_line_key
+  CAST(order_line_id AS INT) sales_order_line_key
+  , CAST(order_id AS INT) sales_order_key
+  , CAST(stock_item_id AS INT) product_key
+  , CAST(quantity AS INT) quantity
+  , CAST(unit_price AS NUMERIC) unit_price
+  , CAST(unit_price * quantity AS NUMERIC)  gross_amount
+FROM `vit-lam-data.wide_world_importers.sales__order_lines` 
+)
+SELECT 
+  sales_order_line_key
+  , fol.sales_order_key
+  , fso.customer_key
+  , product_key
   , quantity
   , unit_price
-  , unit_price * quantity gross_amount
-FROM `vit-lam-data.wide_world_importers.sales__order_lines` 
+  , gross_amount
+FROM fact_sales_order_line__source fol
+LEFT JOIN {{ref('stg_fact_sales_order')}} fso 
+ON  fol. sales_order_key = fso. sales_order_key
