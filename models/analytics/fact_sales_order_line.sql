@@ -19,6 +19,8 @@ SELECT
   , quantity
   , unit_price
   , gross_amount
+  , order_date
+  , expected_delivery_date
 FROM fact_sales_order_line__source fol
 LEFT JOIN {{ref('stg_fact_sales_order')}} fso 
 ON  fol. sales_order_key = fso. sales_order_key
