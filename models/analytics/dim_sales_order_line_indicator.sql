@@ -8,7 +8,7 @@ WITH dim_is_undersupply_backordered AS (
     , 'Not Undersupply Backordered' AS is_undersupply_backordered
 )
 SELECT 
-    CONCAT(is_undersupply_backordered_boolean,",",package_type_key ) sales_order_line_indicator_key
+    FARM_FINGERPRINT(CONCAT(is_undersupply_backordered_boolean,",",package_type_key )) sales_order_line_indicator_key
     , is_undersupply_backordered
     , package_type_name
 FROM dim_is_undersupply_backordered db
