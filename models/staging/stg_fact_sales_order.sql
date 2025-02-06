@@ -6,4 +6,5 @@ SELECT
   , CAST(contact_person_id AS INT) contact_person_key
   , CAST(order_date AS DATE) order_date
   , CAST(expected_delivery_date AS DATE) expected_delivery_date
+  , CAST(	is_undersupply_backordered AS BOOLEAN) is_undersupply_backordered
 FROM vit-lam-data.wide_world_importers.sales__orders

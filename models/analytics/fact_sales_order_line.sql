@@ -3,6 +3,7 @@ SELECT
   CAST(order_line_id AS INT) sales_order_line_key
   , CAST(order_id AS INT) sales_order_key
   , CAST(stock_item_id AS INT) product_key
+  , CAST(package_type_id AS INT) package_type_key
   , CAST(quantity AS INT) quantity
   , CAST(unit_price AS NUMERIC) unit_price
   , CAST(unit_price * quantity AS NUMERIC)  gross_amount
@@ -13,7 +14,9 @@ SELECT
   , fol.sales_order_key
   , fso.customer_key
   , fso.sales_person_person_key
-  , fso.picked_by_person_key
+  , is_undersupply_backordered
+  , CONCAT(is_undersupply_backordered,",",package_type_key ) sales_order_line_indicator_key
+  , package_type_key
   , fso.contact_person_key
   , product_key
   , quantity

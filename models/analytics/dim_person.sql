@@ -1,12 +1,8 @@
 SELECT  
   CAST (person_id AS INT ) person_key
   , CAST (full_name AS STRING ) full_name
+  , CAST(search_name AS STRING) search_name
+  , CAST(is_employee AS BOOLEAN) is_employee
+  , CAST(is_salesperson AS BOOLEAN) is_salesperson
+         
 FROM `vit-lam-data.wide_world_importers.application__people` 
-UNION ALL
-SELECT 
-    0 person_key
-    , "Undefined" full_name
-UNION ALL
-    SELECT
-    -1 AS person_key
-    , 'Invalid' AS full_name
