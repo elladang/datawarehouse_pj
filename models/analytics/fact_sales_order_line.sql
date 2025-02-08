@@ -14,9 +14,7 @@ SELECT
   , fol.sales_order_key
   , fso.customer_key
   , fso.sales_person_person_key
-  , is_undersupply_backordered
   , FARM_FINGERPRINT(CONCAT(is_undersupply_backordered,",",package_type_key )) sales_order_line_indicator_key
-  , package_type_key
   , fso.contact_person_key
   , product_key
   , quantity
