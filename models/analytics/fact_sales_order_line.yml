@@ -5,6 +5,8 @@ models:
     tests: 
       - dbt_utils.expression_is_true:
           expression: "gross_amount = unit_price * quantity"
+      - dbt_utils.equal_rowcount: 
+          compare_model: "`vit-lam-data.wide_world_importers.sales__order_lines`"
     columns:
       - name: sales_order_line_key
         tests: 
@@ -66,4 +68,21 @@ models:
           - relationships: 
               to: ref('dim_date')
               field: date
+
+      - name: quantity
+        tests: 
+          - custom_test_equal_sum:
+              compare_model: "`vit-lam-data.wide_world_importers.sales__order_lines`"
+              compare_column: quantity
+
+      - name: unit_price
+        tests: 
+          - custom_test_equal_sum:
+              compare_model: "`vit-lam-data.wide_world_importers.sales__order_lines`"
+              compare_column: unit_price
+
+            
+
+
+
             
