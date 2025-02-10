@@ -15,10 +15,14 @@ models:
     - name: is_statement_sent
       tests: 
         - not_null
+        - accepted_values: 
+            values: ['Sent', 'Not Sent', 'Invalid']
 
     - name: is_on_credit_hold
       tests: 
         - not_null
+        - accepted_values: 
+            values: ['On Credit Hold', 'Not On Credit Hold']
 
     - name: standard_discount_percentage
       tests: 

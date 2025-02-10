@@ -52,6 +52,9 @@ models:
           - relationships: 
               to: ref('dim_date')
               field: date
+          - dbt_utils.accepted_range: 
+              min_value: "'2013-01-01'"
+              max_value: 'CURRENT_DATE()'
           
       - name: expected_delivery_date
         tests: 
