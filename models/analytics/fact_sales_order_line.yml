@@ -1,6 +1,10 @@
 version: 2
 models: 
+
   - name: fact_sales_order_line
+    tests: 
+      - dbt_utils.expression_is_true:
+          expression: "gross_amount = unit_price * quantity"
     columns:
       - name: sales_order_line_key
         tests: 
