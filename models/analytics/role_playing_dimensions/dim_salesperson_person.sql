@@ -3,3 +3,4 @@ SELECT
     , full_name sales_person_full_name
     , search_name sales_person_search_name
 FROM {{ref('dim_person')}}
+WHERE is_salesperson IS TRUE
